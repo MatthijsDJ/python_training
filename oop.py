@@ -42,16 +42,16 @@ class Person:
             return False
 
     def get_first_name(self) -> str:
-        return self.first_name
+        return self._first_name
     
-    def set_first_name(self, first_name: str) -> None:
+    def set_first_name(self, first_name: str):
         if first_name:
-            self.first_name = first_name
+            self._first_name = first_name
             return self
         else:
             raise ValueError
 
-
+    first_name = property(get_first_name, set_first_name)
 
 birth_date = datetime.date(year=2000, month=12, day=3)
 person_1 = Person(first_name='Matthijs', last_name='de Jong', date_of_birth=birth_date, shoe_size=-1)
