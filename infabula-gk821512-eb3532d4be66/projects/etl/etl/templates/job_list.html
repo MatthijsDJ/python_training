@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+    <style>
+      body {background-color: powderblue;}
+      .running   {color: green;}
+      .stopped   {color: red;}
+    </style>
+</head>
+<body>
+<h1>Jobs</h1>
+<ul>
+    {%- for job in data.jobs.values() %}
+       <li><a href="/etl/jobs/{{job.name}}">
+           <span class="jobname">{{ job.name }}</span></a>
+       {%- if job.running %} <span class="running">RUNNING</span>
+           {% else %} <span class="stopped">STOPPED</span> {% endif %}
+       </li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
